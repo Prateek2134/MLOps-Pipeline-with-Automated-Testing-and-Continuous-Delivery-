@@ -1,75 +1,73 @@
-# Machine Learning Opearations (MLOps)
+Machine Learning Operations (MLOps)
+MLOps Pipeline Project
 
-## MLOps maturity level 4
+Developed by: Prateek Rao
 
-## Overview :
-This project implements a robust MLOps pipeline, facilitating the continuous integration, continuous deployment, and monitoring of machine learning models. The infrastructure leverages AWS, Kubernetes, and various open-source tools to ensure scalability, reproducibility, and maintainability.
+Overview
 
+This project demonstrates an end-to-end MLOps pipeline for automating the machine learning lifecycle, including data versioning, model training, testing, deployment, and monitoring. The system integrates DevOps practices to ensure scalable, reproducible, and reliable ML model deployment using modern cloud and automation tools.
 
+Project Architecture
 
-## Architecture :
+The architecture follows a modular MLOps workflow where data, model development, and deployment are managed through automated pipelines. The system uses version control, containerization, continuous integration, and monitoring tools to maintain a stable ML production environment.
 
-![image](https://github.com/Chandru-21/MLOps_Project/assets/64595758/123511be-fe66-424d-8776-513b908840fe)
+Key Features
+Data Versioning
 
-## Key Features :
+Data is managed and tracked using DVC, allowing reproducible experiments and efficient data management across different stages of the ML pipeline.
 
-**Data Versioning** : DVC
+Continuous Integration (CI)
 
-**Continuous Integration(CI)** : Triggered through ‘main.yml’ , building the code (docker), tests the code(Pytest),pushes the docker image to AWS ECR. 
+Automated CI workflows are configured using GitHub Actions. When new code is pushed to the repository, the pipeline automatically:
 
-**Experiment Tracking / Model Versioning** : MLflow 
+Builds the project environment
 
-**Continuous Deployment(CD)** : Deploys FastAPI in AWS EKS(kubernetes cluster) for real-time and batch predictions. 
+Runs automated tests using Pytest
 
-**Continuous Monitoring(CM)** : Integrating the ‘/metrics’ method of  FastAPI in Prometheus and visualizes endpoints in Grafana.  
+Validates the machine learning pipeline
 
-**Continuous Training(CT)** : Triggers code execution through GitHub Actions when new data is pushed to the remote DVC location and committed to Git. 
+Experiment Tracking & Model Versioning
 
-**Drift Monitoring** : Uses a Streamlit app to monitor data drift, target drift, and performs data quality checks.
+Model experiments, parameters, and performance metrics are tracked using MLflow, allowing easy comparison of different model versions.
 
+Continuous Deployment (CD)
 
+The trained model is deployed as an API service using FastAPI, enabling real-time predictions. Containerization ensures smooth deployment and scalability.
 
+Continuous Monitoring (CM)
 
+The deployed model service exposes monitoring metrics that allow tracking of system performance, API usage, and model health.
 
+Continuous Training (CT)
 
-## Data Monitoring :
+The pipeline supports automated model retraining when new data becomes available, ensuring that the model remains updated and accurate.
 
-**Data Drift Monitoring** :
+Data Drift Monitoring
 
-![image](https://github.com/Chandru-21/MLOps_Project/assets/64595758/af0df23d-9980-4ee4-94c0-ddebdb923237)
+The system includes data validation and drift detection mechanisms to monitor changes in incoming data and maintain model reliability.
 
-**Data Quality checks** :
+Technologies Used
 
-![image](https://github.com/Chandru-21/MLOps_Project/assets/64595758/c1c62d64-9b69-4ca7-ba45-45ae226a7620)
+Programming Language: Python
 
+Machine Learning Libraries: Scikit-learn, Pandas, NumPy
 
-## Continuous Monitoring(CM)
+Version Control: Git, GitHub
 
-**Exposing "/metrics" on FastAPI to be connected to Prometheus** :
+Data Versioning: DVC
 
-![fastapi](https://github.com/Chandru-21/MLOps_Project/assets/64595758/09b18b44-8cb1-4a86-9172-c79082cb77c8)
+Experiment Tracking: MLflow
 
-**FastAPI integrated in to Prometheus** :
+API Deployment: FastAPI
 
-![fastapi_prometheus](https://github.com/Chandru-21/MLOps_Project/assets/64595758/4b21c089-bef3-4e39-b5e1-04cb8e026345)
+Testing: Pytest
 
-**Integrating Prometheus in to Grafana for Visualization** :
+Containerization: Docker
 
-Monitoring FastAPI methods on Grafana,
+CI/CD Automation: GitHub Actions
 
-![fastapi_continuous_monitoring](https://github.com/Chandru-21/MLOps_Project/assets/64595758/930f0a9a-352f-41f9-8106-9b6735af8ce4)
+Cloud Platform: AWS (EC2, S3, IAM)
 
-**Monitoring the resources of the Kubernetes cluster on Grafana** :
+Conclusion
 
-![grafana_monitoring_containers_dashboard](https://github.com/Chandru-21/MLOps_Project/assets/64595758/d046d9f9-1477-4975-9041-f4aa128bb0f3)
-
-
-
-
-
-
-
-
-
-
-
+This project demonstrates how DevOps practices can be integrated with machine learning workflows to build scalable and automated ML systems. The pipeline improves model reliability, automation, and deployment efficiency, making it suitable for real-world ML production environments.
